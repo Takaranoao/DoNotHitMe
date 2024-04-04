@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "id": "donothitme",
+  "version": "${version}",
+  "name": "DoNotHitMe",
+  "description": "",
+  "authors": [],
+  "contact": {},
+  "license": "GNU LGPL 3.0",
+  "icon": "icon.png",
+  "environment": "client",
+  "entrypoints": {
+    "main": [
+      "com.takaranoao.donothitme.fabric.DoNotHitMeFabric"
+    ],
+    "modmenu": [
+      "com.takaranoao.donothitme.fabric.config.DNHModMenuIntegration"
+    ]
+  },
+  "mixins": [
+    "donothitme.mixins.json",
+    "donothitme-common.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.15.9",
+    "minecraft": ">=1.20.4"
+  }
+}
