@@ -1,16 +1,15 @@
-package com.takaranoao.donothitme.forge;
+package com.takaranoao.donothitme.neoforge;
 
 import com.takaranoao.donothitme.DoNotHitMe;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.client.ConfigScreenHandler;
-import net.minecraftforge.fml.ModLoadingContext;
-import net.minecraftforge.fml.common.Mod;
+import net.neoforged.fml.ModLoadingContext;
+import net.neoforged.fml.common.Mod;
+import net.neoforged.neoforge.client.ConfigScreenHandler;
 
 @Mod(DoNotHitMe.MOD_ID)
-public class DoNotHitMeForge {
+public class DoNotHitMeNeoForge {
     private final DoNotHitMe commonMod;
 
-    public DoNotHitMeForge() {
+    public DoNotHitMeNeoForge() {
         this.commonMod = new DoNotHitMe();
         commonMod.init();
         ModLoadingContext.get().registerExtensionPoint(

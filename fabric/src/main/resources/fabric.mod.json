@@ -22,8 +22,8 @@
     "donothitme-common.mixins.json"
   ],
   "depends": {
-    "cloth_config": ">=11.1.118",
-    "fabricloader": ">=0.15.9",
+    "cloth-config": ">=11.1.118",
+    "fabricloader": ">=0.15.7",
     "minecraft": ">=1.20.4"
   },
   "recommends": {

@@ -1,15 +1,17 @@
 plugins {
     id "com.github.johnrengelman.shadow" version "7.1.2"
 }
+repositories {
+    maven { url "https://maven.neoforged.net/releases/" }
+}
 loom {
-    forge {
-        mixinConfig "donothitme-common.mixins.json"
-        mixinConfig "donothitme.mixins.json"
+    neoForge {
     }
 }
+
 architectury {
     platformSetupLoomIde()
-    forge()
+    neoForge()
 }
 
 configurations {
@@ -21,7 +23,7 @@ configurations {
 }
 
 dependencies {
-    forge "net.minecraftforge:forge:${rootProject.architectury.minecraft}-${rootProject.forge_version}"
+    neoForge "net.neoforged:neoforge:${rootProject.neoforge_version}"
 
     common(project(path: ":common", configuration: "namedElements")) { transitive false }
     shadowCommon(project(path: ":common", configuration: "transformProductionForge")) { transitive = false }

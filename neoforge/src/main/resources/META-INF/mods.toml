@@ -6,7 +6,7 @@
 # The name of the mod loader type to load - for regular FML @Mod mods it should be javafml
 modLoader = "javafml" #mandatory
 # A version range to match for said mod loader - for regular FML @Mod it will be the forge version
-loaderVersion = "[49,)" #mandatory This is typically bumped every Minecraft version by Forge. See our download page for lists of versions.
+loaderVersion = "[1,)" #mandatory This is typically bumped every Minecraft version by Forge. See our download page for lists of versions.
 # The license for you mod. This is mandatory metadata and allows for easier comprehension of your redistributive properties.
 # Review your options at https://choosealicense.com/. All rights reserved is the default copyright stance, and is thus the default here.
 license = "GNU LGPL 3.0"
@@ -44,29 +44,36 @@ logoFile = "icon.png" #optional
 description = '''
 
 '''
-# A dependency - use the . to indicate dependency for a specific modid. Dependencies are optional.
-[[dependencies.donothitme]] #optional
-# the modid of the dependency
-modId = "forge" #mandatory
-# Does this dependency have to exist - if not, ordering below must be specified
-mandatory = true #mandatory
-# The version range of the dependency
-versionRange = "[49,)" #mandatory
-# An ordering relationship for the dependency - BEFORE or AFTER required if the relationship is not mandatory
-ordering = "NONE"
-# Side this dependency is applied on - BOTH, CLIENT or SERVER
-side = "CLIENT"
-# Here's another dependency
-[[dependencies.donothitme]]
-modId = "cloth_config"
-mandatory = true
-versionRange = "[11.1.118,)"
-ordering = "NONE"
-side = "CLIENT"
+# The [[mixins]] block allows you to declare your mixin config to FML so that it gets loaded.
+[[mixins]]
+config = "donothitme.mixins.json"
+
+[[mixins]]
+config = "donothitme-common.mixins.json"
+
+# The [[accessTransformers]] block allows you to declare where your AT file is.
+# If this block is omitted, a fallback attempt will be made to load an AT from META-INF/accesstransformer.cfg
+#[[accessTransformers]]
+#file="META-INF/accesstransformer.cfg"
+
+# The coremods config file path is not configurable and is always loaded from META-INF/coremods.json
 [[dependencies.donothitme]]
 modId = "minecraft"
 mandatory = true
 # This version range declares a minimum of the current minecraft version up to but not including the next major version
 versionRange = "[1.20.4,1.21)"
+ordering = "NONE"
+side = "CLIENT"
+[[dependencies.donothitme]]
+modId = "neoforge"
+type = "required"
+versionRange = "[20.4,)"
+ordering = "NONE"
+side = "CLIENT"
+# Here's another dependency
+[[dependencies.donothitme]]
+modId = "cloth_config"
+type = "required"
+versionRange = "[11.1.118,)"
 ordering = "NONE"
 side = "CLIENT"
