@@ -1,4 +1,8 @@
 {
+  "key.donothitme.enable": "Enable/Disable [Don't hit me]",
+  "key.donothitme.swing_main_hand": "Swing Main Hand",
+  "key.donothitme.swing_off_hand": "Swing Off Hand",
+  "message.donothitme.disable": "[Don't hit me] disabled",
   "message.donothitme.enable": "[Don't hit me] enabled",
-  "message.donothitme.disable": "[Don't hit me] disabled"
+  "key.category.donothitme": "Don't hit me"
 }
