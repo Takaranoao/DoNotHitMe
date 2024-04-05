@@ -58,6 +58,12 @@ ordering = "NONE"
 side = "BOTH"
 # Here's another dependency
 [[dependencies.donothitme]]
+modId = "cloth_config"
+mandatory = true
+versionRange = "[11.1.118,)"
+ordering = "NONE"
+side = "BOTH"
+[[dependencies.donothitme]]
 modId = "minecraft"
 mandatory = true
 # This version range declares a minimum of the current minecraft version up to but not including the next major version
