@@ -77,3 +77,10 @@ type = "required"
 versionRange = "[11.1.118,)"
 ordering = "NONE"
 side = "CLIENT"
+# "architectury": ">=13.0.121",
+[[dependencies.donothitme]]
+modId = "architectury"
+type = "required"
+versionRange = "[13.0.121,)"
+ordering = "NONE"
+side = "CLIENT"

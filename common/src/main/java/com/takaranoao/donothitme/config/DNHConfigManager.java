@@ -34,6 +34,10 @@ public class DNHConfigManager {
         return configHolder.getConfig();
     }
 
+    public ConfigHolder<DNHConfig> getConfigHolder() {
+        return configHolder;
+    }
+
     public Supplier<Screen> screenSupplier(Screen parent) {
         return AutoConfig.getConfigScreen(DNHConfig.class, parent);
     }

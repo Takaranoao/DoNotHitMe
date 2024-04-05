@@ -70,3 +70,10 @@ mandatory = true
 versionRange = "[1.20.4,1.21)"
 ordering = "NONE"
 side = "CLIENT"
+# "architectury": ">=13.0.121",
+[[dependencies.donothitme]]
+modId = "architectury"
+mandatory = true
+versionRange = "[13.0.121,)"
+ordering = "NONE"
+side = "CLIENT"
