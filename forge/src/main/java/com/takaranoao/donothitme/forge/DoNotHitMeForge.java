@@ -1,7 +1,6 @@
 package com.takaranoao.donothitme.forge;
 
 import com.takaranoao.donothitme.DoNotHitMe;
-import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.ConfigScreenHandler;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
