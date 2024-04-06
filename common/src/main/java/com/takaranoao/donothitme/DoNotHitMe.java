@@ -2,12 +2,19 @@ package com.takaranoao.donothitme;
 
 import com.takaranoao.donothitme.config.DNHConfigManager;
 import com.takaranoao.donothitme.data.DNHKeyType;
+import dev.architectury.event.EventResult;
 import dev.architectury.event.events.client.ClientTickEvent;
+import dev.architectury.event.events.common.PlayerEvent;
 import dev.architectury.registry.client.keymappings.KeyMappingRegistry;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.EntityHitResult;
 import org.jetbrains.annotations.NotNull;
 
 public class DoNotHitMe {
@@ -25,7 +32,25 @@ public class DoNotHitMe {
         this.keyBindManager = new DNHKeyManager(this);
         instance = this;
         ClientTickEvent.CLIENT_LEVEL_POST.register(this::onTick);
+        PlayerEvent.ATTACK_ENTITY.register(this::onPlayerAttackEntity);
         keyBindManager.getKeyBindings().forEach(KeyMappingRegistry::register);
+    }
+
+    private EventResult onPlayerAttackEntity(Player player, Level level, Entity entity, InteractionHand interactionHand, EntityHitResult entityHitResult) {
+        var config = configManager.getConfig();
+        if (!config.enable) {
+            return EventResult.pass();
+        }
+        if(entity instanceof Player){
+            if(config.no_pvp){
+                return EventResult.interruptFalse();
+            }
+        }else if(entity instanceof LivingEntity){
+            if(config.no_pve){
+                return EventResult.interruptFalse();
+            }
+        }
+        return EventResult.pass();
     }
 
     private void onTick(ClientLevel clientLevel) {
