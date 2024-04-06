@@ -40,7 +40,7 @@ remapJar {
     injectAccessWidener = true
     inputFile.set(shadowJar.archiveFile)
     dependsOn shadowJar
-    archiveClassifier = null
+    archiveClassifier.set(project.name)
 }
 
 jar {

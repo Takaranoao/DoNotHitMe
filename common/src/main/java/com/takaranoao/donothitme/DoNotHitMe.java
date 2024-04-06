@@ -23,8 +23,8 @@ import org.jetbrains.annotations.Nullable;
 
 public class DoNotHitMe {
     public static final String MOD_ID = "donothitme";
-    private DNHConfigManager configManager;
     private static DoNotHitMe instance;
+    private DNHConfigManager configManager;
     private DNHKeyManager keyBindManager;
 
     public static DoNotHitMe getInstance() {
