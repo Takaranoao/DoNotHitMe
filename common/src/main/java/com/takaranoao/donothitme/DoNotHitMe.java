@@ -8,6 +8,7 @@ import dev.architectury.event.events.common.PlayerEvent;
 import dev.architectury.registry.client.keymappings.KeyMappingRegistry;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;
+import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.Entity;
@@ -15,7 +16,9 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.EntityHitResult;
+import net.minecraft.world.phys.HitResult;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 public class DoNotHitMe {
     public static final String MOD_ID = "donothitme";
@@ -41,12 +44,12 @@ public class DoNotHitMe {
         if (!config.enable) {
             return EventResult.pass();
         }
-        if(entity instanceof Player){
-            if(config.no_pvp){
+        if (entity instanceof Player) {
+            if (config.no_pvp) {
                 return EventResult.interruptFalse();
             }
-        }else if(entity instanceof LivingEntity){
-            if(config.no_pve){
+        } else if (entity instanceof LivingEntity) {
+            if (config.no_pve) {
                 return EventResult.interruptFalse();
             }
         }
@@ -92,6 +95,42 @@ public class DoNotHitMe {
                     player.sendSystemMessage(Component.translatable("message.donothitme.disable"));
                 }
             }
+        }
+    }
+
+    public boolean handleStartAttack(@NotNull LocalPlayer player, @Nullable HitResult hitResult) {
+        var config = configManager.getConfig();
+        if (!config.enable || hitResult == null) {
+            return true;
+        }
+        if (hitResult.getType() == HitResult.Type.BLOCK || hitResult.getType() == HitResult.Type.MISS) {
+            return true;
+        }
+        if (config.keep_main_hand_waving) {
+            return true;
+        }
+        if (hitResult instanceof EntityHitResult) {
+            var entity = ((EntityHitResult) hitResult).getEntity();
+            if (entity instanceof Player) {
+                return !config.no_pvp;
+            } else if (entity instanceof LivingEntity) {
+                return !config.no_pve;
+            }
+        }
+        return true;
+    }
+
+
+    public void handleAfterStartUseItem(@NotNull LocalPlayer player, @Nullable HitResult hitResult) {
+        var config = configManager.getConfig();
+        if (!config.enable) {
+            return;
+        }
+        if (player.isHandsBusy()) {
+            return;
+        }
+        if (config.open_off_hand_waving) {
+            player.swing(InteractionHand.OFF_HAND);
         }
     }
 }
