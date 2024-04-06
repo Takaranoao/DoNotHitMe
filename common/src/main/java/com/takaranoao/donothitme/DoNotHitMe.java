@@ -45,16 +45,11 @@ public class DoNotHitMe {
         if (!config.enable) {
             return EventResult.pass();
         }
-        if (entity instanceof Player) {
-            if (config.no_pvp) {
-                return EventResult.interruptFalse();
-            }
-        } else if (entity instanceof LivingEntity) {
-            if (config.no_pve) {
-                return EventResult.interruptFalse();
-            }
+        if (canAttack(config, entity)) {
+            return EventResult.pass();
+        } else {
+            return EventResult.interruptFalse();
         }
-        return EventResult.pass();
     }
 
     private void onTick(ClientLevel clientLevel) {
@@ -119,11 +114,16 @@ public class DoNotHitMe {
         }
         if (hitResult instanceof EntityHitResult) {
             var entity = ((EntityHitResult) hitResult).getEntity();
-            if (entity instanceof Player) {
-                return !config.no_pvp;
-            } else if (entity instanceof LivingEntity) {
-                return !config.no_pve;
-            }
+            return canAttack(config, entity);
+        }
+        return true;
+    }
+
+    private boolean canAttack(@NotNull DNHConfig config, Entity entity) {
+        if (entity instanceof Player) {
+            return !config.no_pvp;
+        } else if (entity instanceof LivingEntity) {
+            return !config.no_pve;
         }
         return true;
     }
@@ -150,11 +150,6 @@ public class DoNotHitMe {
         if (!config.pat_through) {
             return true;
         }
-        if (entity1 instanceof Player) {
-            return !config.no_pvp;
-        } else if (entity1 instanceof LivingEntity) {
-            return !config.no_pve;
-        }
-        return true;
+        return canAttack(config, entity1);
     }
 }
