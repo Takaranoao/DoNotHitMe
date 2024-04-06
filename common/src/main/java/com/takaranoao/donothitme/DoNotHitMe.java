@@ -157,42 +157,4 @@ public class DoNotHitMe {
         }
         return true;
     }
-
-    //这一部分是MixinGameRenderer使用
-//    public void handleAfterGameRendererPick(Minecraft minecraft, float tickDelta) {
-//        if (minecraft.hitResult == null) {
-//            return;
-//        }
-//        var config = configManager.getConfig();
-//        if (!config.pat_through) {
-//            return;
-//        }
-//        if (!isHitResultOk(config, minecraft.hitResult)) {
-//            getBlockHitResult(minecraft, tickDelta).ifPresent(
-//                    hitResult -> minecraft.hitResult = hitResult
-//            );
-//        }
-//    }
-//
-//    public Optional<BlockHitResult> getBlockHitResult(@NotNull Minecraft minecraft, float tickDelta) {
-//        var player = minecraft.player;
-//        if (player == null) {
-//            return Optional.empty();
-//        }
-//        if (minecraft.gameMode == null) {
-//            return Optional.empty();
-//        }
-//        var pickRange = minecraft.gameMode.getPickRange();
-//        return Optional.ofNullable(pickBlock(player, pickRange, tickDelta, false));
-//
-//    }
-//    @SuppressWarnings("resource")
-//    public BlockHitResult pickBlock(LocalPlayer localPlayer, double pickRange, float tickDelta, boolean fluid) {
-//        Vec3 eyePosition = localPlayer.getEyePosition(tickDelta);
-//        Vec3 viewVector = localPlayer.getViewVector(tickDelta);
-//        return localPlayer.level().clip(
-//                new ClipContext(eyePosition, eyePosition.add(viewVector.scale(pickRange)), ClipContext.Block.OUTLINE, fluid ? net.minecraft.world.level.ClipContext.Fluid.ANY : net.minecraft.world.level.ClipContext.Fluid.NONE, localPlayer)
-//        );
-//    }
-
 }
