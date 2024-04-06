@@ -26,19 +26,20 @@ public class MixinMinecraft {
     @Inject(method = "startUseItem", at = @At("RETURN"))
     private void startUseItem(CallbackInfo ci) {
         var mod = DoNotHitMe.getInstance();
-        if(mod == null  || player == null){
+        if (mod == null || player == null) {
             return;
         }
-        mod.handleAfterStartUseItem(player, hitResult);
+        mod.handleAfterStartUseItem(player);
     }
-    @Inject(method="startAttack", at=@At("HEAD"))
+
+    @Inject(method = "startAttack", at = @At("HEAD"), cancellable = true)
     private void startAttack(CallbackInfoReturnable<Boolean> cir) {
-       var mod = DoNotHitMe.getInstance();
-       if(mod == null || player == null){
-           return;
-       }
-       if(!  mod.handleStartAttack(player, hitResult)){
-           cir.setReturnValue(false);
-       }
+        var mod = DoNotHitMe.getInstance();
+        if (mod == null || player == null) {
+            return;
+        }
+        if (!mod.handleStartAttack(hitResult)) {
+            cir.setReturnValue(false);
+        }
     }
 }

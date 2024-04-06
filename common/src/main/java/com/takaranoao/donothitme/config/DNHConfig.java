@@ -4,16 +4,18 @@ import me.shedaniel.autoconfig.ConfigData;
 import me.shedaniel.autoconfig.annotation.Config;
 import me.shedaniel.autoconfig.annotation.ConfigEntry;
 
-@Config(name = "do_not_hit_me")
+@Config(name = "donothitme")
 public class DNHConfig implements ConfigData {
-    @ConfigEntry.Gui.Tooltip(count = 2)
+    @ConfigEntry.Gui.Tooltip()
     public boolean enable = false;
-    @ConfigEntry.Gui.Tooltip(count = 2)
+    @ConfigEntry.Gui.Tooltip()
     public boolean no_pvp = true;
-    @ConfigEntry.Gui.Tooltip(count = 2)
+    @ConfigEntry.Gui.Tooltip()
     public boolean no_pve = true;
+    @ConfigEntry.Gui.Tooltip()
+    public boolean keep_main_hand_wave = true;
+    @ConfigEntry.Gui.Tooltip()
+    public boolean open_off_hand_wave = false;
     @ConfigEntry.Gui.Tooltip(count = 2)
-    public boolean keep_main_hand_waving = true;
-    @ConfigEntry.Gui.Tooltip(count = 2)
-    public boolean open_off_hand_waving = false;
+    public boolean pat_through = false;
 }

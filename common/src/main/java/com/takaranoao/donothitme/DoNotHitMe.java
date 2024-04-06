@@ -1,5 +1,6 @@
 package com.takaranoao.donothitme;
 
+import com.takaranoao.donothitme.config.DNHConfig;
 import com.takaranoao.donothitme.config.DNHConfigManager;
 import com.takaranoao.donothitme.data.DNHKeyType;
 import dev.architectury.event.EventResult;
@@ -98,15 +99,22 @@ public class DoNotHitMe {
         }
     }
 
-    public boolean handleStartAttack(@NotNull LocalPlayer player, @Nullable HitResult hitResult) {
+    public boolean handleStartAttack(@Nullable HitResult hitResult) {
         var config = configManager.getConfig();
-        if (!config.enable || hitResult == null) {
+        if (!config.enable) {
+            return true;
+        }
+        if (config.keep_main_hand_wave) {
+            return true;
+        }
+        return isHitResultOk(config, hitResult);
+    }
+
+    private boolean isHitResultOk(@NotNull DNHConfig config, @Nullable HitResult hitResult) {
+        if (hitResult == null) {
             return true;
         }
         if (hitResult.getType() == HitResult.Type.BLOCK || hitResult.getType() == HitResult.Type.MISS) {
-            return true;
-        }
-        if (config.keep_main_hand_waving) {
             return true;
         }
         if (hitResult instanceof EntityHitResult) {
@@ -121,7 +129,7 @@ public class DoNotHitMe {
     }
 
 
-    public void handleAfterStartUseItem(@NotNull LocalPlayer player, @Nullable HitResult hitResult) {
+    public void handleAfterStartUseItem(@NotNull LocalPlayer player) {
         var config = configManager.getConfig();
         if (!config.enable) {
             return;
@@ -129,8 +137,62 @@ public class DoNotHitMe {
         if (player.isHandsBusy()) {
             return;
         }
-        if (config.open_off_hand_waving) {
+        if (config.open_off_hand_wave) {
             player.swing(InteractionHand.OFF_HAND);
         }
     }
+
+    public boolean filterTargetEntity(Entity entity1) {
+        var config = configManager.getConfig();
+        if (!config.enable) {
+            return true;
+        }
+        if (!config.pat_through) {
+            return true;
+        }
+        if (entity1 instanceof Player) {
+            return !config.no_pvp;
+        } else if (entity1 instanceof LivingEntity) {
+            return !config.no_pve;
+        }
+        return true;
+    }
+
+    //这一部分是MixinGameRenderer使用
+//    public void handleAfterGameRendererPick(Minecraft minecraft, float tickDelta) {
+//        if (minecraft.hitResult == null) {
+//            return;
+//        }
+//        var config = configManager.getConfig();
+//        if (!config.pat_through) {
+//            return;
+//        }
+//        if (!isHitResultOk(config, minecraft.hitResult)) {
+//            getBlockHitResult(minecraft, tickDelta).ifPresent(
+//                    hitResult -> minecraft.hitResult = hitResult
+//            );
+//        }
+//    }
+//
+//    public Optional<BlockHitResult> getBlockHitResult(@NotNull Minecraft minecraft, float tickDelta) {
+//        var player = minecraft.player;
+//        if (player == null) {
+//            return Optional.empty();
+//        }
+//        if (minecraft.gameMode == null) {
+//            return Optional.empty();
+//        }
+//        var pickRange = minecraft.gameMode.getPickRange();
+//        return Optional.ofNullable(pickBlock(player, pickRange, tickDelta, false));
+//
+//    }
+//    @SuppressWarnings("resource")
+//    public BlockHitResult pickBlock(LocalPlayer localPlayer, double pickRange, float tickDelta, boolean fluid) {
+//        Vec3 eyePosition = localPlayer.getEyePosition(tickDelta);
+//        Vec3 viewVector = localPlayer.getViewVector(tickDelta);
+//        return localPlayer.level().clip(
+//                new ClipContext(eyePosition, eyePosition.add(viewVector.scale(pickRange)), ClipContext.Block.OUTLINE, fluid ? net.minecraft.world.level.ClipContext.Fluid.ANY : net.minecraft.world.level.ClipContext.Fluid.NONE, localPlayer)
+//        );
+//    }
+
 }
