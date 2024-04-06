@@ -2,9 +2,30 @@
 
 [![Java CI with Gradle](https://github.com/Takaranoao/DoNotHitMe/actions/workflows/gradle.yml/badge.svg)](https://github.com/Takaranoao/DoNotHitMe/actions/workflows/gradle.yml)
 
-这个项目是一个名为 "Don't Hit Me" 的 Minecraft 插件，它提供了一系列的功能，允许玩家在游戏中自定义他们的交互方式。以下是一些主要的功能和特性：
+为了让多人游戏尽量减少误伤流血事件而写的一个mod
 
-## 功能
+## 使用说明
+
+### 支持的Minecraft版本
+1.20.4
+
+### 支持的Modloader
+Fabric,MinecraftForge,NeoForge
+
+### 前置mod
+
+#### Fabric
+- 必须:
+  - [Cloth Config API](https://modrinth.com/mod/cloth-config)
+  - [Architectury API](https://modrinth.com/mod/architectury-api)
+- 建议:
+  - [Mod Menu](https://modrinth.com/mod/modmenu)
+#### Forge (MinecraftForge/NeoForge)
+- 必须:
+  - [Cloth Config API](https://modrinth.com/mod/cloth-config)
+  - [Architectury API](https://modrinth.com/mod/architectury-api)
+
+## 功能介绍(由chatgpt生成)
 
 ### 一键开启/关闭
 通过按键，你可以快速地开启或关闭插件的所有功能。这个功能的按键可以在游戏设置中自定义。
