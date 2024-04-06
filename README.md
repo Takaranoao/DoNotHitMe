@@ -1,9 +1,7 @@
-# DoNotHitMe
+# DoNotHitMe / 好好挖矿，不要给我一镐子
 
 [![Java CI with Gradle](https://github.com/Takaranoao/DoNotHitMe/actions/workflows/gradle.yml/badge.svg)](https://github.com/Takaranoao/DoNotHitMe/actions/workflows/gradle.yml)
 
-好好挖矿，不要给我一镐子
-------
 这个项目是一个名为 "Don't Hit Me" 的 Minecraft 插件，它提供了一系列的功能，允许玩家在游戏中自定义他们的交互方式。以下是一些主要的功能和特性：
 
 ## 功能
