@@ -16,6 +16,6 @@ public class DNHConfig implements ConfigData {
     public boolean keep_main_hand_wave = true;
     @ConfigEntry.Gui.Tooltip()
     public boolean open_off_hand_wave = false;
-    @ConfigEntry.Gui.Tooltip(count = 2)
+    @ConfigEntry.Gui.Tooltip()
     public boolean pat_through = false;
 }
