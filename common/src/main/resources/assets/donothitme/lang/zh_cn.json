@@ -1,8 +1,21 @@
 {
-  "key.donothitme.enable": "Enable/Disable [Don't hit me]",
-  "key.donothitme.swing_main_hand": "Swing Main Hand",
-  "key.donothitme.swing_off_hand": "Swing Off Hand",
-  "message.donothitme.disable": "[Don't hit me] disabled",
-  "message.donothitme.enable": "[Don't hit me] enabled",
-  "key.category.donothitme": "Don't hit me"
+  "key.category.donothitme": "别打(Don't hit me)",
+  "key.donothitme.enable": "一键开启/关闭",
+  "key.donothitme.swing_main_hand": "挥动主手",
+  "key.donothitme.swing_off_hand": "挥动副手",
+  "message.donothitme.disable": "[Don't hit me] 已关闭",
+  "message.donothitme.enable": "[Don't hit me] 已开启",
+  "text.autoconfig.donothitme.option.enable": "总开关",
+  "text.autoconfig.donothitme.option.enable.@Tooltip[0]": "如果这个选项关闭，则所有功能都不生效",
+  "text.autoconfig.donothitme.option.keep_main_hand_wave": "保持主手挥动",
+  "text.autoconfig.donothitme.option.keep_main_hand_wave.@Tooltip[0]": "当攻击被取消时是否仍然继续挥手动画",
+  "text.autoconfig.donothitme.option.no_pve": "关闭 PVE",
+  "text.autoconfig.donothitme.option.no_pve.@Tooltip[0]": "禁止攻击其他实体(不包含玩家)",
+  "text.autoconfig.donothitme.option.no_pvp": "关闭 PVP",
+  "text.autoconfig.donothitme.option.no_pvp.@Tooltip[0]": "禁止攻击其他玩家",
+  "text.autoconfig.donothitme.option.open_off_hand_wave": "开启副手挥动",
+  "text.autoconfig.donothitme.option.open_off_hand_wave.@Tooltip[0]": "右键(使用物品)时挥动副手",
+  "text.autoconfig.donothitme.option.pat_through": "操作穿透",
+  "text.autoconfig.donothitme.option.pat_through.@Tooltip[0]": "操作是否可以穿透被禁止攻击的实体",
+  "text.autoconfig.donothitme.title": "别打(Don't hit me)"
 }

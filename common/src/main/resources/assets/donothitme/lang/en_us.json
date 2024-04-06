@@ -1,8 +1,21 @@
 {
-  "message.donothitme.enable": "[Don't hit me] enabled",
-  "message.donothitme.disable": "[Don't hit me] disabled",
+  "key.category.donothitme": "Don't hit me",
+  "key.donothitme.enable": "One-click Enable/Disable",
   "key.donothitme.swing_main_hand": "Swing Main Hand",
   "key.donothitme.swing_off_hand": "Swing Off Hand",
-  "key.donothitme.enable": "Enable/Disable [Don't hit me]",
-  "key.category.donothitme": "Don't hit me"
+  "message.donothitme.disable": "[Don't hit me] is disabled",
+  "message.donothitme.enable": "[Don't hit me] is enabled",
+  "text.autoconfig.donothitme.option.enable": "Master Switch",
+  "text.autoconfig.donothitme.option.enable.@Tooltip[0]": "If this option is disabled, all functions will not take effect",
+  "text.autoconfig.donothitme.option.keep_main_hand_wave": "Keep Main Hand Swing",
+  "text.autoconfig.donothitme.option.keep_main_hand_wave.@Tooltip[0]": "Whether to continue the hand swing animation when the attack is cancelled",
+  "text.autoconfig.donothitme.option.no_pve": "Disable PVE",
+  "text.autoconfig.donothitme.option.no_pve.@Tooltip[0]": "Prohibit attacking other entities (excluding players)",
+  "text.autoconfig.donothitme.option.no_pvp": "Disable PVP",
+  "text.autoconfig.donothitme.option.no_pvp.@Tooltip[0]": "Prohibit attacking other players",
+  "text.autoconfig.donothitme.option.open_off_hand_wave": "Enable Off Hand Swing",
+  "text.autoconfig.donothitme.option.open_off_hand_wave.@Tooltip[0]": "Swing off hand when right-clicking (using items)",
+  "text.autoconfig.donothitme.option.pat_through": "Operation Penetration",
+  "text.autoconfig.donothitme.option.pat_through.@Tooltip[0]": "Whether the operation can penetrate entities that are prohibited from being attacked",
+  "text.autoconfig.donothitme.title": "Don't hit me"
 }
